@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+}
+
+.competition--body {
+    background: #232b2b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+header {
+    background: #0e1111;
+    width: 100vw;
+}
+
+.header--logo {
+    max-width: 4rem;
+    margin: 1rem;
+}
