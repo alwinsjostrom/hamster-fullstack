@@ -7,7 +7,7 @@ type Hamster = any
 const Landing = () => {
 
     const production = 'https://hamsterwars--fullstack.herokuapp.com/';
-    const development = 'http://localhost:3000/';
+    const development = 'http://localhost:5500/';
     const baseUrl = (process.env.NODE_ENV ? production : development);
 
     const [hamsters, setHamsters] = useState<Hamster[] | null>(null)
