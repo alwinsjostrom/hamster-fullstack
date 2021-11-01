@@ -22,12 +22,15 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "start": "node backend/server.js",
+    "start-backend": "node backend/server.js",
+    "start-frontend-dev": "react-scripts start",
     "test-frontend": "npx http-server ./evaluate/",
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:5500",
   "keywords": [
     "REST API",
     "Express",
