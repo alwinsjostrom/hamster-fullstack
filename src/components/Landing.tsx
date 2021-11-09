@@ -6,17 +6,13 @@ type Hamster = any
 
 const Landing = () => {
 
-    const production = 'https://hamsterwars--fullstack.herokuapp.com/';
-    const development = 'http://localhost:5500/';
-    const baseUrl = (process.env.NODE_ENV ? production : development);
-
     const [hamsters, setHamsters] = useState<Hamster[] | null>(null)
 
     //useEffect
 
     //Hämta den hamster som leder
     const sendRequest = async () => {
-        const response = await fetch(baseUrl + 'hamsters/cutest')
+        const response = await fetch('/hamsters/cutest')
         const data = await response.json()
         //Slumpa en om flera ligger lika
         const randomized = [data[Math.floor(Math.random() * data.length)]]
@@ -60,9 +56,9 @@ const Landing = () => {
 
                 {hamsters
                     ? hamsters.map(obj => (
-                        <article className='hamster--card'>
+                        <article className='hamster--card' key={obj.id}>
                             <figure>
-                                <img src={baseUrl + 'img/' + obj.imgName} alt={obj.name} />
+                                <img src={'/img/' + obj.imgName} alt={obj.name} />
                             </figure>
                             <h2>{obj.name}</h2>
                             <p>{'Vinster: ' + obj.wins}</p>

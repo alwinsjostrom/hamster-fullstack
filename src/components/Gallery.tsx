@@ -6,15 +6,11 @@ type Hamster = any
 
 const Gallery = () => {
 
-    const production = 'https://hamsterwars--fullstack.herokuapp.com/';
-    const development = 'http://localhost:5500/';
-    const baseUrl = (process.env.NODE_ENV ? production : development);
-    
     const [hamsters, setHamsters] = useState<Hamster[] | null>(null)
 
     //Hämta alla hamstrar
     const sendRequest = async () => {
-        const response = await fetch(baseUrl + 'hamsters')
+        const response = await fetch('/hamsters')
         const data = await response.json()
         setHamsters(data)
     }
@@ -41,9 +37,9 @@ const Gallery = () => {
                 <section className='grid--container'>
                     {hamsters
                     ? hamsters.map(obj => (
-                        <article className='hamster--card'>
+                        <article className='hamster--card' key={obj.id}>
                             <figure>
-                                <img src={baseUrl + 'img/' + obj.imgName} alt={obj.name} />
+                                <img src={'/img/' + obj.imgName} alt={obj.name} />
                             </figure>
                             <h2>{obj.name}</h2>
                             <p>{'Vinster: ' + obj.wins}</p>
