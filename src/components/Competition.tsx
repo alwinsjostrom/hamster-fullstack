@@ -16,7 +16,7 @@ const Competition = () => {
 
     //Kör on mount
     useEffect(() => {
-        console.log('Component mounted');
+        sendRequest()
         return () => {
             console.log('Component will be unmount')
         }
@@ -67,28 +67,28 @@ const Competition = () => {
         setActive(false)
 
         //Updatera vinnaren med nya värden i databasen
-        // fetch("/hamsters/" + winner.id, {
-        //     method: 'PUT',
-        //     headers: {
-        //       'content-type': 'application/json;charset=UTF-8',
-        //     },
-        //     body: JSON.stringify({
-        //         games: winner.games,
-        //         wins: winner.wins
-        //     })
-        // })
+        fetch("/hamsters/" + winner.id, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify({
+                games: winner.games,
+                wins: winner.wins
+            })
+        })
 
         //Updatera förloraren med nya värden i databasen
-        // fetch("/hamsters/" + loser[0].id, {
-        //     method: 'PUT',
-        //     headers: {
-        //       'content-type': 'application/json;charset=UTF-8',
-        //     },
-        //     body: JSON.stringify({
-        //         games: loser[0].games,
-        //         defeats: loser[0].defeats
-        //     })
-        // })
+        fetch("/hamsters/" + loser[0].id, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify({
+                games: loser[0].games,
+                defeats: loser[0].defeats
+            })
+        })
     }
 
     return (
@@ -104,11 +104,12 @@ const Competition = () => {
                     <Link to='/competition' style={{ textDecoration: 'none' }}><h3>Competition</h3></Link>
                     <Link to='/gallery' style={{ textDecoration: 'none' }}><h3>Gallery</h3></Link>
                 </nav>
+                <article className='competition--info'>
+                    <h4>Här kan du rösta på vilken hamster du tycker är sötast.</h4>
+                </article>
                 <section className='competiton__hamster--section'>
 
-                    <article className='competition--info'>
-                        <h4>Här kan du rösta på vilken hamster du tycker är sötast.</h4>
-                    </article>
+
 
                     {one && oneVisible
                         ? one.map(obj => (
@@ -151,8 +152,7 @@ const Competition = () => {
                         : ''}
                 </section>
 
-                <button className="again--btn" onClick={sendRequest}>Spela igen!</button>
-                <button onClick={sendRequest}>Press me!</button>
+                <button className={active ? 'hide' : 'again--btn'} onClick={sendRequest}>Spela igen!</button>
 
             </main>
         </div>

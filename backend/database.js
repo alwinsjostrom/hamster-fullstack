@@ -21,4 +21,4 @@ let connect = () => {
     return db
 }
 
-module.exports = { connect }
+module.exports =  connect 

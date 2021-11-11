@@ -74,3 +74,29 @@
     color: white;
     font-family: 'Fira Sans', sans-serif;
 }
+
+.hide {
+    display: none;
+}
+
+.error--message {
+    background: #eee;
+    padding: .5rem;
+    min-width: 50vw;
+    margin-bottom: 1.5rem;
+}
+
+.error--message p {
+    margin: .5rem 0;
+}
+
+.error--message button {
+    margin: .5rem 0;
+    background: #fff;
+    color: #232b2b;
+    padding: .4rem 2rem;
+    border-radius: 2rem;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}

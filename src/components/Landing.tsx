@@ -3,30 +3,41 @@ import { useEffect, useState } from 'react';
 import '../styles/landing.css';
 
 type Hamster = any
+type Visibility = boolean
 
 const Landing = () => {
 
     const [hamsters, setHamsters] = useState<Hamster[] | null>(null)
+    const [active, setActive] = useState<Visibility | true>(true)
 
     //Kör on mount
     useEffect(() => {
         console.log('Component mounted');
+        sendRequest()
         return () => {
             console.log('Component will be unmount')
         }
     }, []);
 
-    //Hämta den hamster som leder
-    const sendRequest = async () => {
-        const response = await fetch('/hamsters/cutest')
-        const data = await response.json()
-        //Slumpa en om flera ligger lika
-        const randomized = [data[Math.floor(Math.random() * data.length)]]
-        setHamsters(randomized)
-    }
+    //Hämta alla hamstrar
+    const sendRequest = () => {
 
-    const logData = () => {
-        console.log(hamsters)
+        setActive(true)
+
+        fetch('/hamsters/cutest')
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                //Slumpa en om flera ligger lika
+                const randomized = [data[Math.floor(Math.random() * data.length)]]
+                setHamsters(randomized)
+            })
+            .catch(err => {
+                //Hantera felmeddelande
+                console.log(err.message)
+                setActive(false)
+            })
     }
 
     return (
@@ -48,12 +59,12 @@ const Landing = () => {
 
                 <article className='landing--info'>
                     <h1>Välkommen till hamsterwars!</h1>
-                    <h4>Du kommer få två alternativ, och du kan rösta på den hamster du tycker är sötast. Nedan kan du se vilken eller vilka hamstrar som leder tävlingen. Tryck på knappen för att gå vidare till första rundan.</h4>
+                    <h4>Du kommer få två alternativ, och du kan rösta på den hamster du tycker är sötast. Nedan kan du se vilken hamster som leder tävlingen. Tryck på Competition-fliken för att gå vidare till första rundan.</h4>
                 </article>
 
-                <article className='landing__hamster--card'>
-                    <img src='https://media.istockphoto.com/photos/hamster-picture-id1299089557' alt='test' />
-                    <h2>Kalle</h2>
+                <article className={active? 'hide' : 'error--message'}>
+                    <p>Hoppsan, något gick fel. Försök igen?</p>
+                    <button onClick={sendRequest}>Nytt försök</button>
                 </article>
 
                 {hamsters
@@ -65,9 +76,6 @@ const Landing = () => {
                     ))
                     : ''}
             </main>
-
-            <button onClick={sendRequest}>Press me!</button>
-
 
         </div>
 
