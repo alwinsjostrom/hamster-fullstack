@@ -10,8 +10,7 @@ if( process.env.FIREBASEKEY ) {
 }
 
 //Anslut till databasen
-let connect = () => {
-
+const connect = () => {
     admin.initializeApp({
         credential: admin.credential.cert(serviceAccount)
     })
@@ -21,4 +20,4 @@ let connect = () => {
     return db
 }
 
-module.exports = { connect }
+module.exports = { connect }

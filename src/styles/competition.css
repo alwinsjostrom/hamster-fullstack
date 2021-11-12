@@ -1,22 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Roboto+Mono&display=swap');
+
 * {
     margin: 0;
 }
 
 .competition--body {
-    background: #232b2b;
+    background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
     min-height: 100vh;
+    overflow: hidden;
 }
 
-header {
-    background: #0e1111;
+.competition--header {
+    background: #232b2b;
     width: 100vw;
 }
 
 .header--logo {
     max-width: 4rem;
-    margin: 1rem;
+    margin: 1rem 0;
+}
+
+.competition--nav {
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.competition--nav h3 {
+    margin: .5rem 1rem;
+    color: #232b2b;
+    text-decoration: none;
+}
+
+.competition--main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+    
+.competition--info {
+    margin: 1.5rem 1.5rem;
+    padding: .2rem 0;
+    background: #eee;
+    font-family: 'Roboto Mono', monospace;
+    width: 90vw;
+}
+
+.competition--info h1, .competition--info h4 {
+    color: #232b2b;
+    margin: .8rem 1rem;
+}
+
+.competiton__hamster--card h2 {
+    margin: .4rem 0 .6rem 0;
+    color: white;
+    
+}
+
+.competiton__hamster--card p {
+    color: white;
+}
+
+.competiton__hamster--card aside {
+    margin: 0 0 1rem 0;
+}
+
+.competiton__hamster--card button, .again--btn {
+    margin: 0 0 1.5rem 0;
+    background: #eee;
+    color: #232b2b;
+    padding: .4rem 2rem;
+    border-radius: 2rem;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .competiton__hamster--section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .competiton__hamster--card {
+        background: #232b2b;
+        border: .2rem solid #f79329;
+        border-radius: 2rem;
+        width: 80vw;
+        margin: 1rem;
+        font-family: 'Fira Sans', sans-serif;
+    }
+    
+    .competiton__hamster--card img {
+        width: 80vw;
+        border-top-right-radius: 1.8rem;
+        border-top-left-radius: 1.8rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .competiton__hamster--section {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .competiton__hamster--card {
+        background: #232b2b;
+        border: .2rem solid #f79329;
+        border-radius: 2rem;
+        width: 40vw;
+        margin: 1rem;
+        font-family: 'Fira Sans', sans-serif;
+    }
+    
+    .competiton__hamster--card img {
+        width: 40vw;
+        border-top-right-radius: 1.8rem;
+        border-top-left-radius: 1.8rem;
+    }
 }

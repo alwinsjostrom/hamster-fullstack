@@ -1,107 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Roboto+Mono&display=swap');
 * {
     margin: 0;
 }
 
 .gallery--body {
-    background: #232b2b;
+    background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
     min-height: 100vh;
+    overflow: hidden;
 }
 
-header {
-    background: #0e1111;
+.gallery--header {
+    background: #232b2b;
     width: 100vw;
 }
 
 .header--logo {
     max-width: 4rem;
-    margin: 1rem;
+    margin: 1rem 0;
 }
 
-.grid--container {
+.gallery--nav {
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.gallery--nav h3 {
+    margin: .5rem 1rem;
+    color: #232b2b;
+    text-decoration: none;
+}
+
+.gallery__grid--container {
     display: grid;
-    grid-template-columns: repeat(4, 20vw);
-    grid-column-gap: 1rem;
 }
 
-.hamster--card {
-    background: white;
-    max-width: 20vw;
+.gallery--info {
+    margin: 1.5rem auto;
+    padding: .2rem 0;
+    background: #eee;
+    font-family: 'Roboto Mono', monospace;
+    width: 90vw;
+}
+
+.gallery--info h1, .gallery--info h4 {
+    color: #232b2b;
+    margin: .8rem 1rem;
+}
+
+.gallery__hamster--card {
+    background: #232b2b;
+    border: .2rem solid #f79329;
+    border-radius: 2rem;
+    font-family: 'Fira Sans', sans-serif;
+    justify-self: center;
+}
+
+.gallery__hamster--card img {
+    border-top-right-radius: 1.8rem;
+    border-top-left-radius: 1.8rem;
+}
+
+.gallery__hamster--card h2 {
+    margin: .4rem 0 .6rem 0;
+    color: white;
+}
+
+.gallery__hamster--card p {
+    color: white;
+}
+
+.gallery__hamster--card button, .add--btn, .submit--btn {
+    background: #eee;
+    color: #232b2b;
+    padding: .4rem 2rem;
+    border-radius: 2rem;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.gallery__hamster--card button:hover {
+    background: lightgrey;
+}
+
+.add--card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 2rem;
-    border-radius: 1rem;
-    padding-bottom: .5rem;
-    height: 50vh;
+    padding-top: 1rem;
+    justify-self: center;
+    background: #eee;
+    margin: .5rem auto;
+    width: 90vw;
 }
 
-.hamster__card--add {
-    background: white;
+.add--card input {
+    border-radius: 1rem;
+}
+
+.untouched {
+    border-color: black;
+}
+
+.valid {
+    border-color: green;
+}
+
+.invalid {
+    border-color: red;
+}
+
+.add--btn {
     max-width: 20vw;
+    justify-self: center;
+    margin: 0 1rem;
+}
+
+.add--btn:hover {
+    background: lightgrey;
+}
+
+.submit--btn {
+    margin: 1rem 0;
+    align-self: center;
+    background: white;
+    border: .2rem solid green;
+}
+
+.submit--btn:disabled {
+    color: grey;
+    border-color: grey;
+}
+
+.gallery__hamster--card {
+    font-family: 'Fira Sans', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 2rem;
-    border-radius: 1rem;
-    padding-bottom: .5rem;
-    height: 50vh;
 }
 
-.hamster__card--add h1 {
-    color: black;
+.gallery__hamster--card button {
+    margin: .5rem auto;
 }
 
-main img {
-    width: 20vw;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    height: 35vh;
-
+.gallery__hamster--info {
+    margin-top: .5rem;
 }
 
-@media screen and (max-width: 700px) {
-    .grid--container {
-        display: grid;
-        grid-template-columns: repeat(2, 40vw);
-        grid-column-gap: 1rem;
-    }
-    
-    .hamster--card {
-        background: white;
-        max-width: 40vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        margin-bottom: 2rem;
-        border-radius: 1rem;
-        padding-bottom: .5rem;
-        height: 50vh;
+.gallery__hamster--info h4 {
+    color: #eee;
+    margin: .3rem 0;
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .gallery__grid--container {
+        grid-template-columns: repeat(1, 100vw);
     }
 
-    .hamster__card--add {
-        background: white;
-        max-width: 20vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        margin-bottom: 2rem;
-        border-radius: 1rem;
-        padding-bottom: .5rem;
-        height: 50vh;
+    .gallery__hamster--card {
+        min-width: 80vw;
+        margin: 1rem;
+        padding: 0 0 1rem 0;
     }
-    
-    main img {
-        width: 40vw;
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-        height: 35vh;
+
+    .gallery__hamster--card img {
+        width: 80vw;
+    }
+
+    .add--card input {
+        margin: .5rem 1rem 0 1rem;
+        padding: .2rem;
+    }
+
+    .submit--btn {
+        width: 50vw;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 700px) {
+    .gallery__grid--container {
+        grid-template-columns: repeat(2, 50vw);
+    }
+
+    .gallery__hamster--card {
+        min-width: 45vw;
+        margin: 1rem;
+        padding: 0 0 1rem 0;
+    }
+
+    .gallery__hamster--card img {
+        width: 45vw;
+    }
+
+    .add--card input {
+        margin: .5rem 1rem 0 1rem;
+        padding: .2rem;
+    }
+
+    .submit--btn {
+        width: 50vw;
+    }
+}
+
+@media screen and (min-width: 700px) {
+
+    .gallery__grid--container {
+        grid-template-columns: repeat(4, 25vw);
+    }
+
+    .gallery__hamster--card {
+        min-width: 22vw;
+        margin: 1rem;
+        padding: 0 0 1rem 0;
+    }
+
+    .gallery__hamster--card img {
+        width: 22vw;
+    }
+
+    .add--card input {
+        margin: .5rem 1rem 0 1rem;
+        padding: .2rem;
+    }
+
+    .submit--btn {
+        width: 50vw;
     }
 }

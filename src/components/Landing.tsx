@@ -1,31 +1,43 @@
+import '../styles/landing.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import '../styles/landing.css';
+import HamsterObj from '../models/hamster';
 
-type Hamster = any
+type Visibility = boolean
 
 const Landing = () => {
+    const [hamsters, setHamsters] = useState<HamsterObj[] | null>(null)
+    const [active, setActive] = useState<Visibility>(true)
 
-    const [hamsters, setHamsters] = useState<Hamster[] | null>(null)
+    //Kör on mount
+    useEffect(() => {
+        sendRequest()
+    }, []);
 
-    //useEffect
+    //Hämta alla hamstrar
+    const sendRequest = () => {
+        //Göm felmeddelande
+        setActive(true)
 
-    //Hämta den hamster som leder
-    const sendRequest = async () => {
-        const response = await fetch('/hamsters/cutest')
-        const data = await response.json()
-        //Slumpa en om flera ligger lika
-        const randomized = [data[Math.floor(Math.random() * data.length)]]
-        setHamsters(randomized)
-    }
-
-    const logData = () => {
-        console.log(hamsters)
+        fetch('/hamsters/cutest')
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                //Slumpa en om flera ligger lika
+                const randomized = [data[Math.floor(Math.random() * data.length)]]
+                setHamsters(randomized)
+            })
+            .catch(err => {
+                //Hantera felmeddelande
+                console.log(err.message)
+                setActive(false)
+            })
     }
 
     return (
         <div className='landing--body'>
-            <header>
+            <header className="landing--header">
                 <figure>
                     <Link to='/'>
                         <img className='header--logo' src="hamster_logo.png" alt="logo" />
@@ -33,50 +45,34 @@ const Landing = () => {
                 </figure>
             </header>
 
-            <main>
-                <nav>
-                    <Link to='/'><h3>Landing</h3></Link>
-                    <Link to='/competition'><h3>Competition</h3></Link>
-                    <Link to='/gallery'><h3>Gallery</h3></Link>
+            <main className='landing--main'>
+                <nav className='landing--nav'>
+                    <Link to='/' style={{ textDecoration: 'none' }}><h3>Home</h3></Link>
+                    <Link to='/competition' style={{ textDecoration: 'none' }}><h3>Battle</h3></Link>
+                    <Link to='/gallery' style={{ textDecoration: 'none' }}><h3>Gallery</h3></Link>
                 </nav>
 
-                <article className='main--info'>
+                <article className='landing--info'>
                     <h1>Välkommen till hamsterwars!</h1>
-                    <h3>Du kommer få två alternativ, och du kan rösta på den hamster du tycker är sötast. Nedan kan du se vilken eller vilka hamstrar som leder tävlingen. Tryck på knappen för att gå vidare till första rundan.</h3>
+                    <h4>Du kommer få två alternativ, och du kan rösta på den hamster du tycker är sötast. Nedan kan du se vilken hamster som leder tävlingen. Tryck på Battle-fliken för att gå vidare till första rundan.</h4>
                 </article>
 
-                <article className='hamster--card'>
-                    <figure>
-                        <img src='https://media.istockphoto.com/photos/hamster-picture-id1299089557' alt='test' />
-                    </figure>
-                    <h2>Kalle</h2>
-                    <p>Vinster: 1</p>
-                    <p>Matcher: 1</p>
+                <article className={active? 'hide' : 'error--message'}>
+                    <p>Hoppsan, något gick fel. Försök igen?</p>
+                    <button onClick={sendRequest}>Prova igen</button>
                 </article>
 
                 {hamsters
                     ? hamsters.map(obj => (
-                        <article className='hamster--card' key={obj.id}>
-                            <figure>
-                                <img src={'/img/' + obj.imgName} alt={obj.name} />
-                            </figure>
+                        <article className='landing__hamster--card' key={obj.id}>
+                            <img src={'/img/' + obj.imgName} alt={obj.name} />
                             <h2>{obj.name}</h2>
-                            <p>{'Vinster: ' + obj.wins}</p>
-                            <p>{'Matcher: ' + obj.games}</p>
                         </article>
                     ))
-                    : 'Loading hamsters...'}
+                    : ''}
             </main>
-
-            <button onClick={sendRequest}>Press me!</button>
-            <button onClick={logData}>Logga hamsters</button>
-
-
         </div>
-
     )
 }
-
-
 
 export default Landing
