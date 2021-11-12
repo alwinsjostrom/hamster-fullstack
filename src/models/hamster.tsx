@@ -6,7 +6,8 @@ interface HamsterObj {
     name: string,
     age: number,
     loves: string,
-    favFood: string
+    favFood: string,
+    id: string
 }
 
 export default HamsterObj

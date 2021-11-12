@@ -49,11 +49,12 @@
     padding: .2rem 0;
     background: #eee;
     font-family: 'Roboto Mono', monospace;
+    width: 90vw;
 }
 
 .competition--info h1, .competition--info h4 {
     color: #232b2b;
-    margin: .8rem 10vw;
+    margin: .8rem 1rem;
 }
 
 .competiton__hamster--card h2 {

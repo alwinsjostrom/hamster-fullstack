@@ -42,15 +42,16 @@
 }
 
 .gallery--info {
-    margin: 1.5rem 1.5rem;
+    margin: 1.5rem auto;
     padding: .2rem 0;
     background: #eee;
     font-family: 'Roboto Mono', monospace;
+    width: 90vw;
 }
 
 .gallery--info h1, .gallery--info h4 {
     color: #232b2b;
-    margin: .8rem 10vw;
+    margin: .8rem 1rem;
 }
 
 .gallery__hamster--card {
@@ -95,7 +96,8 @@
     padding-top: 1rem;
     justify-self: center;
     background: #eee;
-    margin: .5rem 1.5rem;
+    margin: .5rem auto;
+    width: 90vw;
 }
 
 .add--card input {
@@ -137,7 +139,13 @@
 }
 
 .gallery__hamster--card {
-    font-family: 'Fira Sans', sans-serif
+    font-family: 'Fira Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery__hamster--card button {
+    margin: .5rem auto;
 }
 
 .gallery__hamster--info {

@@ -48,11 +48,12 @@
     margin: 1.5rem 1.5rem;
     background: #eee;
     font-family: 'Roboto Mono', monospace;
+    width: 90vw;
 }
 
 .landing--main h1, .landing--main h4 {
     color: #232b2b;
-    margin: .8rem 10vw;
+    margin: .8rem 1rem;
 }
 
 .landing__hamster--card {

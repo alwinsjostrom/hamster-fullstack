@@ -1,27 +1,22 @@
+import '../styles/landing.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import '../styles/landing.css';
+import HamsterObj from '../models/hamster';
 
-type Hamster = any
 type Visibility = boolean
 
 const Landing = () => {
-
-    const [hamsters, setHamsters] = useState<Hamster[] | null>(null)
-    const [active, setActive] = useState<Visibility | true>(true)
+    const [hamsters, setHamsters] = useState<HamsterObj[] | null>(null)
+    const [active, setActive] = useState<Visibility>(true)
 
     //Kör on mount
     useEffect(() => {
-        console.log('Component mounted');
         sendRequest()
-        return () => {
-            console.log('Component will be unmount')
-        }
     }, []);
 
     //Hämta alla hamstrar
     const sendRequest = () => {
-
+        //Göm felmeddelande
         setActive(true)
 
         fetch('/hamsters/cutest')
@@ -76,12 +71,8 @@ const Landing = () => {
                     ))
                     : ''}
             </main>
-
         </div>
-
     )
 }
-
-
 
 export default Landing

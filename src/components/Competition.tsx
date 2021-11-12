@@ -1,25 +1,21 @@
+import '../styles/competition.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import '../styles/competition.css'
+import HamsterObj from '../models/hamster';
 
-type Hamster = any
 type Visibility = boolean
 
 const Competition = () => {
-
     //Deklarera states
-    const [one, setOne] = useState<Hamster[] | null>(null)
-    const [two, setTwo] = useState<Hamster[] | null>(null)
-    const [oneVisible, setOneVisible] = useState<Visibility | true>(true)
-    const [twoVisible, setTwoVisible] = useState<Visibility | true>(true)
-    const [active, setActive] = useState<Visibility | true>(true)
+    const [one, setOne] = useState<HamsterObj[] | null>(null)
+    const [two, setTwo] = useState<HamsterObj[] | null>(null)
+    const [oneVisible, setOneVisible] = useState<Visibility>(true)
+    const [twoVisible, setTwoVisible] = useState<Visibility>(true)
+    const [active, setActive] = useState<Visibility>(true)
 
     //Kör on mount
     useEffect(() => {
         sendRequest()
-        return () => {
-            console.log('Component will be unmount')
-        }
     }, []);
 
     //Hämta en slumpad hamster
@@ -45,7 +41,7 @@ const Competition = () => {
     }
 
     //Hantera en röstning
-    const sendVote = (winner: any, loser: any, num: number) => {
+    const sendVote = (winner: HamsterObj, loser: [HamsterObj] | any, num: number) => {
 
         //Öka räknare
         winner.games++
@@ -64,6 +60,7 @@ const Competition = () => {
             setOneVisible(false)
         }
 
+        //Visa info
         setActive(false)
 
         //Updatera vinnaren med nya värden i databasen
@@ -98,19 +95,19 @@ const Competition = () => {
                     <img className='header--logo' src="hamster_logo.png" alt="logo" />
                 </Link>
             </header>
+
             <main className="competition--main">
                 <nav className="competition--nav">
                     <Link to='/' style={{ textDecoration: 'none' }}><h3>Landing</h3></Link>
                     <Link to='/competition' style={{ textDecoration: 'none' }}><h3>Competition</h3></Link>
                     <Link to='/gallery' style={{ textDecoration: 'none' }}><h3>Gallery</h3></Link>
                 </nav>
+
                 <article className='competition--info'>
                     <h4>Här kan du rösta på vilken hamster du tycker är sötast.</h4>
                 </article>
+
                 <section className='competiton__hamster--section'>
-
-
-
                     {one && oneVisible
                         ? one.map(obj => (
                             <article className='competiton__hamster--card' key={obj.id}>
@@ -153,7 +150,6 @@ const Competition = () => {
                 </section>
 
                 <button className={active ? 'hide' : 'again--btn'} onClick={sendRequest}>Spela igen!</button>
-
             </main>
         </div>
     )
