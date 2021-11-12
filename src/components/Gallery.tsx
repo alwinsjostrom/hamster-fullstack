@@ -151,8 +151,8 @@ const Gallery = () => {
             <main className="gallery--main">
 
                 <nav className="gallery--nav">
-                    <Link to='/' style={{ textDecoration: 'none' }}><h3>Landing</h3></Link>
-                    <Link to='/competition' style={{ textDecoration: 'none' }}><h3>Competition</h3></Link>
+                    <Link to='/' style={{ textDecoration: 'none' }}><h3>Home</h3></Link>
+                    <Link to='/competition' style={{ textDecoration: 'none' }}><h3>Battle</h3></Link>
                     <Link to='/gallery' style={{ textDecoration: 'none' }}><h3>Gallery</h3></Link>
                 </nav>
 

@@ -47,19 +47,19 @@ const Landing = () => {
 
             <main className='landing--main'>
                 <nav className='landing--nav'>
-                    <Link to='/' style={{ textDecoration: 'none' }}><h3>Landing</h3></Link>
-                    <Link to='/competition' style={{ textDecoration: 'none' }}><h3>Competition</h3></Link>
+                    <Link to='/' style={{ textDecoration: 'none' }}><h3>Home</h3></Link>
+                    <Link to='/competition' style={{ textDecoration: 'none' }}><h3>Battle</h3></Link>
                     <Link to='/gallery' style={{ textDecoration: 'none' }}><h3>Gallery</h3></Link>
                 </nav>
 
                 <article className='landing--info'>
                     <h1>Välkommen till hamsterwars!</h1>
-                    <h4>Du kommer få två alternativ, och du kan rösta på den hamster du tycker är sötast. Nedan kan du se vilken hamster som leder tävlingen. Tryck på Competition-fliken för att gå vidare till första rundan.</h4>
+                    <h4>Du kommer få två alternativ, och du kan rösta på den hamster du tycker är sötast. Nedan kan du se vilken hamster som leder tävlingen. Tryck på Battle-fliken för att gå vidare till första rundan.</h4>
                 </article>
 
                 <article className={active? 'hide' : 'error--message'}>
                     <p>Hoppsan, något gick fel. Försök igen?</p>
-                    <button onClick={sendRequest}>Nytt försök</button>
+                    <button onClick={sendRequest}>Prova igen</button>
                 </article>
 
                 {hamsters

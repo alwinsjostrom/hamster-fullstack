@@ -98,8 +98,8 @@ const Competition = () => {
 
             <main className="competition--main">
                 <nav className="competition--nav">
-                    <Link to='/' style={{ textDecoration: 'none' }}><h3>Landing</h3></Link>
-                    <Link to='/competition' style={{ textDecoration: 'none' }}><h3>Competition</h3></Link>
+                    <Link to='/' style={{ textDecoration: 'none' }}><h3>Home</h3></Link>
+                    <Link to='/competition' style={{ textDecoration: 'none' }}><h3>Battle</h3></Link>
                     <Link to='/gallery' style={{ textDecoration: 'none' }}><h3>Gallery</h3></Link>
                 </nav>
 
@@ -149,7 +149,7 @@ const Competition = () => {
                         : ''}
                 </section>
 
-                <button className={active ? 'hide' : 'again--btn'} onClick={sendRequest}>Spela igen!</button>
+                <button className={active ? 'hide' : 'again--btn'} onClick={sendRequest}>Nästa omgång!</button>
             </main>
         </div>
     )

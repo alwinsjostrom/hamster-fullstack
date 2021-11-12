@@ -48,7 +48,7 @@ const HamsterCard = (props:AppProps) => {
                 <h4>{'Vinster: ' + props.obj.wins}</h4>
                 <h4>{'Förluster: ' + props.obj.defeats}</h4>
             </aside>
-            <button onClick={changeVis}>Mer info</button>
+            <button onClick={changeVis}>{moreInfo ? 'Visa info' : 'Göm info'}</button>
             <button onClick={() => removeHamster(props.obj)}>🗑️</button>
         </article>
     )
