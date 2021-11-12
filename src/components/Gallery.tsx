@@ -16,7 +16,7 @@ const Gallery = () => {
         games: 0,
         wins: 0,
         defeats: 0,
-        imgName: 'hamster-1.jpg',
+        imgName: '',
         name: '',
         age: 0,
         loves: '',
@@ -105,6 +105,10 @@ const Gallery = () => {
             object.favFood = target.value
         }
 
+        //Slumpa en bildaddress från img-mappen
+        const randomNum = Math.floor(Math.random() * 40)
+        object.imgName = `hamster-${randomNum}.jpg`
+
         //Uppdatera state
         setNewHamster(object)
     }
@@ -119,15 +123,12 @@ const Gallery = () => {
             body: JSON.stringify(newHamster)
         })
 
-        //Slumpa en bildaddress från img-mappen
-        const randomNum = Math.floor(Math.random() * 40)
-
         //Reset
         setNewHamster({
             games: 0,
             wins: 0,
             defeats: 0,
-            imgName: `hamster-${randomNum}.jpg`,
+            imgName: '',
             name: '',
             age: 0,
             loves: '',
